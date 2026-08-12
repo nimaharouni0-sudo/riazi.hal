@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سامانه آنلاین حل مسائل ریاضی</title>
+    
+    <!-- فونت استاندارد و زیبای وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    
+    <!-- استایل‌های اختصاصی -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- کتابخانه‌های موتور محاسباتی Nerdamer از طریق CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/nerdamer.core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/Algebra.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/Calculus.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/Solve.js"></script>
+</head>
+<body>
+
+    <main class="main-container">
+        <!-- سربرگ -->
+        <header class="site-header">
+            <h1>سامانه هوشمند حل مسائل ریاضی</h1>
+            <p>محاسبه چهار عمل اصلی، مشتق، انتگرال و مختصات - ۱۰۰٪ رایگان</p>
+        </header>
+
+        <!-- انتخاب نوع محاسبه (تب‌ها) -->
+        <section class="mode-tabs">
+            <button class="tab-btn active" onclick="switchMode('eval')">محاسبه و ساده‌سازی</button>
+            <button class="tab-btn" onclick="switchMode('diff')">مشتق‌گیری (d/dx)</button>
+            <button class="tab-btn" onclick="switchMode('integrate')">انتگرال‌گیری (∫)</button>
+            <button class="tab-btn" onclick="switchMode('coord')">فاصله مختصاتی</button>
+        </section>
+
+        <!-- بخش ورودی مسئله -->
+        <section class="input-section">
+            <label for="math-input" id="input-label">مسئله ریاضی خود را وارد کنید:</label>
+            <div class="input-wrapper">
+                <input type="text" id="math-input" placeholder="مثال: x^2 + 5*x + 6" autocomplete="off">
+            </div>
+
+            <!-- دکمه‌های درج سریع کیبورد ریاضی -->
+            <div class="quick-symbols" id="symbols-bar">
+                <button onclick="insertSymbol('^2')">x²</button>
+                <button onclick="insertSymbol('^')">xⁿ</button>
+                <button onclick="insertSymbol('sqrt(')">√</button>
+                <button onclick="insertSymbol('sin(')">sin</button>
+                <button onclick="insertSymbol('cos(')">cos</button>
+                <button onclick="insertSymbol('pi')">π</button>
+                <button onclick="insertSymbol(' * ')">×</button>
+            </div>
+
+            <!-- دکمه‌های اقدام -->
+            <div class="action-buttons">
+                <button class="btn-submit" onclick="solveMath()">حل مسئله</button>
+                <button class="btn-clear" onclick="clearAll()">پاک‌سازی</button>
+            </div>
+        </section>
+
+        <!-- پیام خطا -->
+        <div id="error-banner" class="error-banner"></div>
+
+        <!-- باکس خروجی با قاب طلایی شیک -->
+        <section class="output-section">
+            <div class="output-header">پاسخ نهایی:</div>
+            <div id="math-output" class="output-content">پاسخ پس از محاسبه در اینجا نمایش داده می‌شود...</div>
+        </section>
+    </main>
+
+    <!-- اسکریپت جاوا اسکریپت -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+/* ==========================================
+   ۱. متغیرهای رنگی و تنظیمات پایه
+   ========================================== */
+:root {
+    --bg-navy: #2B3A67;             /* رنگ سرمه‌ای ملایم پس‌زمینه */
+    --card-navy: #1F2B4D;           /* سرمه‌ای تیره برای کارت اصلی */
+    --gold-accent: #D4AF37;         /* رنگ طلایی اصلی برای قاب‌ها */
+    --gold-hover: #F39C12;          /* رنگ طلایی در حالت هوور */
+    --gold-glow: rgba(212, 175, 55, 0.35); /* افکت درخشش طلایی */
+    --text-white: #FFFFFF;
+    --text-muted: #CBD5E1;
+    --error-red: #EF4444;
+    --radius-lg: 16px;
+    --radius-md: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+body {
+    background-color: var(--bg-navy);
+    color: var(--text-white);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ==========================================
+   ۲. محفظه اصلی (Main Container)
+   ========================================== */
+.main-container {
+    background-color: var(--card-navy);
+    width: 100%;
+    max-width: 680px;
+    padding: 35px 30px;
+    border-radius: var(--radius-lg);
+    /* قاب طلایی شیک */
+    border: 2px solid var(--gold-accent);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 
+                0 0 20px var(--gold-glow);
+}
+
+.site-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.site-header h1 {
+    color: var(--gold-accent);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.site-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   ۳. تب‌های انتخاب حالت محاسبه
+   ========================================== */
+.mode-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: 1px solid var(--gold-accent);
+    color: var(--text-white);
+    padding: 10px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover, .tab-btn.active {
+    background-color: var(--gold-accent);
+    color: #1F2B4D;
+    font-weight: bold;
+    box-shadow: 0 0 12px var(--gold-glow);
+}
+
+/* ==========================================
+   ۴. ورودی‌ها و کیبورد ریاضی
+   ========================================== */
+.input-section {
+    margin-bottom: 20px;
+}
+
+.input-section label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px;
+    background-color: rgba(43, 58, 103, 0.5);
+    border: 1.5px solid var(--gold-accent);
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-size: 1.1rem;
+    direction: ltr; /* ورودی فرمول‌ها چپ به راست */
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus {
+    box-shadow: 0 0 15px var(--gold-glow);
+    border-color: #FFFFFF;
+}
+
+/* کیبورد سریع میانبر */
+.quick-symbols {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    direction: ltr;
+}
+
+.quick-symbols button {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid var(--gold-accent);
+    color: var(--gold-accent);
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.quick-symbols button:hover {
+    background: var(--gold-accent);
+    color: var(--card-navy);
+}
+
+/* دکمه‌های عملیات */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    flex: 2;
+    padding: 14px;
+    background: linear-gradient(135deg, #D4AF37, #F39C12);
+    border: none;
+    border-radius: var(--radius-md);
+    color: #1F2B4D;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--gold-glow);
+}
+
+.btn-clear {
+    flex: 1;
+    padding: 14px;
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-clear:hover {
+    border-color: var(--error-red);
+    color: var(--error-red);
+}
+
+/* ==========================================
+   ۵. باکس خروجی با قاب طلایی شیک
+   ========================================== */
+.output-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.6);
+    /* قاب طلایی ویژه با الگوی دوتایی */
+    border: 2px double var(--gold-accent);
+    border-radius: var(--radius-md);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.output-header {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.output-content {
+    font-size: 1.3rem;
+    color: var(--gold-accent);
+    direction: ltr;
+    text-align: left;
+    word-break: break-all;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    min-height: 35px;
+}
+
+/* پیام خطا */
+.error-banner {
+    display: none;
+    background-color: rgba(239, 68, 68, 0.15);
+    border: 1px solid var(--error-red);
+    color: #FCA5A5;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    margin-top: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* طراحی ریسپانسیو برای موبایل */
+@media (max-width: 500px) {
+    .main-container { padding: 25px 18px; }
+    .site-header h1 { font-size: 1.4rem; }
+    .mode-tabs { grid-template-columns: repeat(2, 1fr); }
+    .action-buttons { flex-direction: column; }
+}
